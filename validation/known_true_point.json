@@ -1,0 +1,32 @@
+{
+  "status": "ok",
+  "observables": {
+    "mh": 16.089105423598514,
+    "mH": 125.25535157515814,
+    "chi2_hs": 93.85377472859182,
+    "omega": 0.13569348989628263
+  },
+  "diagnostics": {
+    "mA": 125.04351735777576,
+    "mHplus": 155.0,
+    "chi2_mu": 86.70475352543458,
+    "chi2_mh": 7.149021203157215,
+    "nobs": 89,
+    "hb_result": 1,
+    "hb_channel": 82,
+    "hb_ncombined": 1,
+    "hb_obsratio": 0.9044271312356579
+  },
+  "target_policy": "paper-higgs",
+  "target_eq7": true,
+  "hb_result": 1,
+  "hb_allowed": true,
+  "target": true,
+  "x": [
+    7.3,
+    7600.0,
+    7.725
+  ],
+  "kind": "historical_true_point_not_new_release_evaluation",
+  "original_file_sha256": "8d2ee5bf0821e168ef62781daf2373cbb9336cf6791fe9e6fee32c1fc502307b"
+}

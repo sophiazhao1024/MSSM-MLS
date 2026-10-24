@@ -1,0 +1,15 @@
+include LICENSE THIRD_PARTY_NOTICES.txt CITATION.cff
+include README.md README.zh-CN.md CHANGELOG.md requirements-tested.txt RELEASE_MANIFEST.json
+include .gitignore .gitattributes
+recursive-include src *.py
+recursive-include configs *.json
+recursive-include physics *.F *.c *.sh *.txt
+recursive-include scripts *.py *.sh
+recursive-include tools *.py
+recursive-include tests *.py
+recursive-include docs *.md *.txt *.json
+recursive-include validation *.json *.jsonl *.csv *.pt
+recursive-include .github *.yml
+exclude configs/backend.local.json configs/backend.built.json configs/backend.this-machine.json
+global-exclude __pycache__ *.pyc .DS_Store
+

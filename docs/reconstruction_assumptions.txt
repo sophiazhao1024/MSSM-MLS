@@ -1,0 +1,177 @@
+MSSM MLS historical reconstruction: disclosed assumptions
+=======================================================
+
+Scope
+-----
+This is an independent implementation of the published Model-4 method in
+Ren et al., Nuclear Physics B 943 (2019) 114613, DOI
+10.1016/j.nuclphysb.2019.114613. It is not the recovered source used by the
+authors. The original input cards, training code and complete run settings
+were unavailable. Historical versions and published formulae are retained;
+unreported choices below are part of this reconstruction, not paper facts.
+The default saved-data first round is a known failure; see known_failure.md.
+
+Evidence categories
+-------------------
+PAPER: explicitly stated for Model-4 or the general MLS procedure.
+INHERITED: stated for Model-1 and extended to Model-4 here.
+CONSTRAINT: requested behavior of this release, not evidence about lost code.
+RECONSTRUCTED: a setting needed for executable code but not uniquely specified
+by the paper. xBIT is a separate implementation and cannot fill this gap as
+proof of the original authors' settings. See sources.md for the source map.
+
+Parameter domain and physical labels
+-----------------------------------
+PAPER: scan x=(M1, mu, tan_beta), with M1 in [2,20] GeV, mu in [7000,9000]
+GeV and tan_beta in [2,10]. The charged-Higgs mass is 155 GeV. M2=M3=2000
+GeV. First/second-generation squark soft masses are 2000 GeV; third-generation
+squark soft masses are 1000 GeV. First/second-generation slepton soft masses
+are 1000 GeV; third-generation slepton soft masses are 1500 GeV.
+At=Ab=Atau=-100 GeV. See domain.py FIXED_PARAMETERS and paper Eq.(6).
+
+PAPER: four independent regressors learn mh, mH, chi2_HS and ln(Omega h^2).
+The lowercase h is the lighter CP-even Higgs; uppercase H is the heavier
+CP-even state interpreted as the SM-like Higgs in this historical scenario.
+chi2_HS is the total HiggsSignals chi-square. omega in JSON/Python always
+means Omega h^2, not its logarithm. Logarithms in learning.py are natural.
+
+CONSTRAINT: raw physical x values go directly into float32 network tensors.
+The first three labels keep their numerical values; only omega is logged.
+There is no input range mapping, mean/std transformation, BatchNorm or
+LayerNorm. Prediction applies exp exactly once to the fourth output.
+Float32 conversion is a precision choice, not standardization. The paper
+does not disclose extra input/output scaling; absence of reporting does not
+prove that the lost implementation lacked it.
+
+Learning choices
+----------------
+PAPER: four scalar regressors plus one physical/unphysical classifier; each
+has four hidden layers of 60 neurons. Classifier output is sigmoid and its
+loss is binary cross-entropy. Adam trains for up to 2000 epochs. Cumulative
+true results are used; the general MLS discussion states no validation/test
+split or regularization. Classifier filtering precedes observable prediction.
+
+INHERITED: ReLU hidden activation, linear regression output, MSE regression
+loss and constant learning rate 0.001 are explicit in Model-1. Model-4 does
+not separately restate all four. They remain an openly declared extension.
+
+RECONSTRUCTED: default batch size 256, exactly 2000 epochs, and fresh network
+weights and Adam state at each cumulative fit. No early stopping is invented
+from the paper's phrase "up to". Adam's other settings use the installed
+PyTorch defaults; weight_decay is explicitly zero. BCEWithLogitsLoss combines
+sigmoid and BCE during training; sigmoid is applied explicitly at inference.
+CPU float32 and one Torch CPU thread are used; domain checks and scoring use
+float64. The tested dependency versions are recorded separately.
+
+RECONSTRUCTED: for fit_count starting at 1 and j=0..3, a regressor's seed is
+scan_seed + 100*fit_count + j; the classifier uses +99. Each network has its
+own initialization and batch-permutation generator. These seed conventions
+are not recovered historical settings. Classifier acceptance is p>=0.5.
+One-class classification data are still fitted. If no physical data exist,
+the program raises TrainingDataError instead of manufacturing labels.
+
+RECONSTRUCTED: "ok" means all required true observables are available and
+physical, including experimentally excluded spectra. These rows train both
+regression and classifier class 1. Explicitly identified "unphysical" rows
+train classifier class 0. "tool_error" rows train neither. An HB-excluded
+spectrum is not an unphysical negative example. A neural rejection is not a
+new true unphysical record.
+
+Proposal rule, counts and efficiency
+-----------------------------------
+PAPER: 1000 initial random evaluations, then 100 recommended evaluations and
+5 additional random evaluations per iteration. General MLS uses likelihood-
+guided rejection sampling. Eq.(7) is used in physical observable units:
+
+L = theta(3-|mH-126|) * theta(112.7273-chi2_HS)
+    * theta(0.03651-|omega-0.1186|) * exp(-0.15*mh).
+
+RECONSTRUCTED: strict windows 123<mH<129, chi2_HS<112.7273,
+0.08209<omega<0.15511, so theta(0)=0. Invalid predicted physical domains
+receive zero weight. Uniform proposals cover the parameter box. Envelope
+M=1 is used because admissible mh>0 implies exp(-0.15*mh)<1. Acceptance is
+evaluated in log space without changing the mathematical weight. There is
+no per-pool maximum renormalization, top-k replacement or random fallback.
+
+RECONSTRUCTED: vectorized candidate chunks are 65536 and the per-round cap
+is 20000000 cheap proposals. Independent random streams, finite-proposal
+guard and exact endpoint conventions are implementation choices. Reaching
+the cap raises ProposalExhausted. The five random additions occur only after
+the recommended batch has been selected; they cannot rescue that failed
+round under this implementation. No zero-recommendation recovery rule was
+reported by the paper.
+
+RECONSTRUCTED: the logical budget counts all attempted true evaluations,
+including technical failures and exact true-result cache hits. Cache hits
+are additionally reported as saved external work. Cheap network candidates
+are not part of this true-evaluation denominator. With budget 20000, the
+last batch is truncated to 95 guided plus 5 random points. This tail handling
+is not separately specified in the paper. A safety stop follows five
+consecutive tool errors. A backend subprocess has a 300-second timeout.
+
+RECONSTRUCTED: default target_policy="paper-higgs" requires valid true
+outputs, Eq.(7) windows and HB_result=1. The paper mentions HiggsBounds and
+Higgs consistency, but Eq.(7) does not explicitly display an HB factor; the
+authors' exact integration is unknown. "eq7-only" reports a diagnostic
+alternative. Both counts share the attempted-evaluation denominator. HB is
+not learned by an extra network and does not enter proposal weights. These
+two target policies must not be mixed to claim a matching efficiency.
+
+Detailed physics inputs and options
+----------------------------------
+PAPER: FeynHiggs 2.13.0, HiggsBounds 4.3.1, HiggsSignals 1.4.0 and
+micrOMEGAs 4.3.2. Matching versions alone does not reconstruct complete cards.
+
+RECONSTRUCTED: cards.py writes native low-scale FeynHiggs input, not a CMSSM
+high-scale SPheno card. MT=172 GeV follows the historical official example
+pattern. Other SM values use FeynHiggs 2.13.0 defaults. MA0=-1 selects the
+charged-Higgs input MHp=155. All imaginary parameters are zero.
+Au=Ac=Ad=As=Ae=Amu=-100 GeV are completed first/second-generation trilinears;
+the paper only specifies At, Ab and Atau. Qt=Qb=Qtau=0 and scalefactor=1
+use the selected native input convention. Soft masses are entered as masses,
+not mass-squared values.
+
+RECONSTRUCTED options, exactly as in configs/backend.example.json:
+  fh_flags = "4002420111"
+  hs_dataset = "latestresults-1.4.0"
+  hs_pdf = 2                 (Gaussian mass probability density)
+  hs_runmode = 1             (peak-centered mode)
+  hs_dmass = [0, 2, 0] GeV   (2 GeV assigned to the heavier CP-even H)
+  hb_dmass = [0, 0, 0] GeV
+  hb_charged_dmass = 0 GeV
+  hb_analyses = "LandH"
+  micromegas.fast = 1
+  micromegas.beps = 1e-5
+  micromegas.vw = 0
+  micromegas.vz = 0
+
+The fourth FH flag higgsmix=2 preserves the CP-even h,H identification.
+The tenth flag tlCplxApprox=1 is the selected approximation for direct MHp
+input. The driver rejects tlCplxApprox=0 with direct MHp input. This avoids
+an inconsistent combination; it does not establish which setting the
+authors used. HS mass uncertainty, top mass and all detailed switches above
+remain reconstructed choices.
+
+micrOMEGAs imports the external SLHA spectrum; the driver does not call an
+alternative spectrum generator. A neutral, color-singlet lightest neutralino
+is required. Missing entries, failed routines and invalid numerical outputs
+are diagnosed separately from identified physical failures.
+
+Provenance and reproducibility
+-----------------------------
+configs/sources.lock.json pins source archive hashes and versions. The MO
+4.3.2 source is a fixed HEPcodes historical mirror commit; an original official
+archive checksum was unavailable. It is not authenticated as byte-identical
+to that missing official archive. Build scripts make disclosed compiler-
+compatibility edits; source version and an executable hash are different
+pieces of evidence.
+
+The distributed initial1000 fixture is a portable publication copy of saved
+true records. Its publication provenance documents removed local metadata.
+No pseudo-labels or synthetic observations are inserted into that fixture.
+Artificial test fixtures are confined to software tests. Saved-data replay
+does not call the physics tools, and is not a new 20000-evaluation scan.
+
+Current validation does not establish the paper's reported approximately
+80% cumulative efficiency or its complete parameter-region coverage. Read
+known_failure.md before using this repository for scientific conclusions.

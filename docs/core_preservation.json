@@ -1,0 +1,92 @@
+{
+  "kind": "release_vs_frozen_logomega_only_variant",
+  "unmodified_numerical_source_and_settings": true,
+  "version_metadata_exception": "src/mssm_mls/__init__.py changes only 0.1.0 to 0.1.1",
+  "files": {
+    "configs/backend.example.json": {
+      "source_sha256": "1c2a63f7d6d71699040c0b5bdfc8ac51ddca04530633f04078abb7889545d64f",
+      "release_sha256": "1c2a63f7d6d71699040c0b5bdfc8ac51ddca04530633f04078abb7889545d64f",
+      "byte_identical": true
+    },
+    "configs/baseline.json": {
+      "source_sha256": "515609a056f8cba86ac932ec3a64877c1ccd6daa789b79e6263e359111311e7e",
+      "release_sha256": "515609a056f8cba86ac932ec3a64877c1ccd6daa789b79e6263e359111311e7e",
+      "byte_identical": true
+    },
+    "configs/sources.lock.json": {
+      "source_sha256": "5aa0ca7291c4213797c9ce30992842d8c60945f80652273da2830965fff28e38",
+      "release_sha256": "5aa0ca7291c4213797c9ce30992842d8c60945f80652273da2830965fff28e38",
+      "byte_identical": true
+    },
+    "physics/build_fh_hs.sh": {
+      "source_sha256": "e7a544926ebefd9b8459a8087b8daa863e5aaa342450b0a71e455d8850bcf94b",
+      "release_sha256": "e7a544926ebefd9b8459a8087b8daa863e5aaa342450b0a71e455d8850bcf94b",
+      "byte_identical": true
+    },
+    "physics/fh_hs_driver.F": {
+      "source_sha256": "005c42c2bcd21b5d61791305ee5b18aec75a5e6ac00021c8948149fa49c03f7e",
+      "release_sha256": "005c42c2bcd21b5d61791305ee5b18aec75a5e6ac00021c8948149fa49c03f7e",
+      "byte_identical": true
+    },
+    "physics/mo_driver.c": {
+      "source_sha256": "0a68352d95be9c40245293eb5e9a3f1238409d4d801718c1644ec868b264c403",
+      "release_sha256": "0a68352d95be9c40245293eb5e9a3f1238409d4d801718c1644ec868b264c403",
+      "byte_identical": true
+    },
+    "scripts/build_mo.sh": {
+      "source_sha256": "2d40627d3dbdcd30f3d87283b2d34cc025af1d94eeb39ec87159d1063f19ae15",
+      "release_sha256": "2d40627d3dbdcd30f3d87283b2d34cc025af1d94eeb39ec87159d1063f19ae15",
+      "byte_identical": true
+    },
+    "scripts/setup_physics.py": {
+      "source_sha256": "705ee6fd5615f030d22f539d5904883d530799eeeb5f8a1d30f7f5a1672be5e2",
+      "release_sha256": "705ee6fd5615f030d22f539d5904883d530799eeeb5f8a1d30f7f5a1672be5e2",
+      "byte_identical": true
+    },
+    "scripts/warm_template.py": {
+      "source_sha256": "f5f3d2fc095ade984970e5c367930821869f9d1a3d3fd2bfc6b0f6145ad41762",
+      "release_sha256": "f5f3d2fc095ade984970e5c367930821869f9d1a3d3fd2bfc6b0f6145ad41762",
+      "byte_identical": true
+    },
+    "src/mssm_mls/__main__.py": {
+      "source_sha256": "3129adff95e0f38b87ab34cddfc27082c7892bcaec267ff5d40f160fdf55b44a",
+      "release_sha256": "3129adff95e0f38b87ab34cddfc27082c7892bcaec267ff5d40f160fdf55b44a",
+      "byte_identical": true
+    },
+    "src/mssm_mls/backend.py": {
+      "source_sha256": "33db2b9e5485b3daeb3b983a3b6b9714d34341e64320e02f0ca1ddd5939784b9",
+      "release_sha256": "33db2b9e5485b3daeb3b983a3b6b9714d34341e64320e02f0ca1ddd5939784b9",
+      "byte_identical": true
+    },
+    "src/mssm_mls/baseline.py": {
+      "source_sha256": "4aaa98d2a93be08470824a0416e6f2e357252ff356b147889b85499d30735f1a",
+      "release_sha256": "4aaa98d2a93be08470824a0416e6f2e357252ff356b147889b85499d30735f1a",
+      "byte_identical": true
+    },
+    "src/mssm_mls/cards.py": {
+      "source_sha256": "8ab5fb9be0fd69d24a5c4af43e39dcac97d8496cc424ed6cf8be53754e9b22f5",
+      "release_sha256": "8ab5fb9be0fd69d24a5c4af43e39dcac97d8496cc424ed6cf8be53754e9b22f5",
+      "byte_identical": true
+    },
+    "src/mssm_mls/cli.py": {
+      "source_sha256": "5135c437bd6da85dabe3d021347b089ae1430404985c62473d4bb6a3da64a741",
+      "release_sha256": "5135c437bd6da85dabe3d021347b089ae1430404985c62473d4bb6a3da64a741",
+      "byte_identical": true
+    },
+    "src/mssm_mls/domain.py": {
+      "source_sha256": "852ce9e9eb563dbd1b63f4f33881eb9b5961a3c443d3d596252a882ee204aad3",
+      "release_sha256": "852ce9e9eb563dbd1b63f4f33881eb9b5961a3c443d3d596252a882ee204aad3",
+      "byte_identical": true
+    },
+    "src/mssm_mls/execution.py": {
+      "source_sha256": "ca044304054147a764602701788fc45f5982a30f60c56656eee455356488bf63",
+      "release_sha256": "ca044304054147a764602701788fc45f5982a30f60c56656eee455356488bf63",
+      "byte_identical": true
+    },
+    "src/mssm_mls/learning.py": {
+      "source_sha256": "f5ae7df2df69434957d1b1735ee60e800bf178f2a304ab91201f089aa6364767",
+      "release_sha256": "f5ae7df2df69434957d1b1735ee60e800bf178f2a304ab91201f089aa6364767",
+      "byte_identical": true
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "public_sanitized_saved_truth_fixture_not_a_new_scan",
+  "original_prefix_sha256": "c2f0ab9a7629258ce2579e45f82bf1841f836a2f1a9c2371a6403e9fadb28d18",
+  "public_file_sha256": "49e95eed77d39e0e5871933ac6860a3465237cdf85d993781bb86aeb6ad4f104",
+  "learning_projection_sha256": "f9369fc71df5d7776a279e3ba29886d0ee79d4559fe67343508caae6f6ba9311",
+  "projection_fields": [
+    "eval_id",
+    "x",
+    "status",
+    "observables"
+  ],
+  "records": 1000,
+  "status_counts": {
+    "ok": 70,
+    "unphysical": 825,
+    "tool_error": 105
+  },
+  "retained_top_level_fields": [
+    "eval_id",
+    "x",
+    "parameters",
+    "status",
+    "observables",
+    "y",
+    "log_score",
+    "target_policy",
+    "target_eq7",
+    "hb_result",
+    "hb_allowed",
+    "target",
+    "origin",
+    "iteration",
+    "predicted",
+    "diagnostics"
+  ],
+  "omitted_top_level_fields": [
+    "reason",
+    "provenance"
+  ],
+  "sanitization": "Removed local operational provenance (paths, commands, timing, cache metadata) and free-text reasons. Retained all listed scientific fields without numerical changes. This derivative is not a raw execution journal and is not accepted as a cache import.",
+  "origin": "First 1000 saved true records from the preceding standardized baseline run; only the original x/status/observables are reused to train the raw-input variant. No previous surrogate predictions or weights are used.",
+  "new_physics_calls": 0,
+  "physics_profile_reference": "configs/backend.example.json",
+  "source_record_versions": {
+    "FeynHiggs": "2.13.0",
+    "HiggsBounds": "4.3.1",
+    "HiggsSignals": "1.4.0",
+    "micrOMEGAs": "4.3.2"
+  },
+  "historical_binary_sha256": {
+    "fh_driver": "2d2c0c283ec344955a97c69dd93a4d0d5a2ac8eeb8f3ca781633598cb1d202f6",
+    "omega_driver": "8923150d7717d1c4f084a557d643d2706ac26fe4c34a941e225cfaf3271cb7d9"
+  },
+  "original_learning_sha256": "f5ae7df2df69434957d1b1735ee60e800bf178f2a304ab91201f089aa6364767"
+}

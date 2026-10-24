@@ -1,0 +1,48 @@
+{
+  "release_version": "0.1.1",
+  "python": "3.12.14",
+  "platform": "Darwin",
+  "machine": "arm64",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "torch": "2.14.1",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1",
+    "setuptools": "84.2.1"
+  },
+  "contract_tests": {
+    "passed": 124,
+    "failed": 0
+  },
+  "public_fixture_replay": {
+    "executed": true,
+    "same_fit_and_selection_as_original": true,
+    "proposals": 20000000,
+    "classifier_survivors": 1805893,
+    "accepted": 0,
+    "status": "proposal_exhausted"
+  },
+  "frozen_affine_check": {
+    "executed": true,
+    "all_three_regressor_gate_certificates_passed": true
+  },
+  "new_physics_calls": 0,
+  "new_external_physics_build": false,
+  "github_actions_executed": false,
+  "full_20000_scan_completed": false,
+  "wheel_build_passed": true,
+  "installed_wheel_cli_help_passed": [
+    "doctor",
+    "point",
+    "scan",
+    "compare"
+  ],
+  "installed_wheel_import_version": "0.1.1",
+  "installation_test_dependency_scope": "Separate test venv; installed wheel supplied mssm_mls, existing tested dependency packages were reused via a local .pth. Not a clean-network dependency installation.",
+  "missing_physics_doctor": {
+    "ready": false,
+    "exit_code": 2,
+    "relative_backend_paths_resolved_in_release": true
+  },
+  "shell_build_script_syntax_passed": true
+}

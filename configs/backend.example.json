@@ -1,0 +1,38 @@
+{
+  "fh_driver": "../physics/bin/fh_hs_driver",
+  "omega_driver": "../vendor/micromegas_4.3.2/MSSM/omega_driver",
+  "mo_work_template": "../vendor/micromegas_4.3.2/MSSM/work",
+  "versions": {
+    "FeynHiggs": "2.13.0",
+    "HiggsBounds": "4.3.1",
+    "HiggsSignals": "1.4.0",
+    "micrOMEGAs": "4.3.2"
+  },
+  "top_mass": 172.0,
+  "timeout_seconds": 300,
+  "options": {
+    "fh_flags": "4002420111",
+    "hs_dataset": "latestresults-1.4.0",
+    "hs_pdf": 2,
+    "hs_runmode": 1,
+    "hs_dmass": [
+      0.0,
+      2.0,
+      0.0
+    ],
+    "hb_dmass": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "hb_charged_dmass": 0.0,
+    "hb_analyses": "LandH"
+  },
+  "micromegas": {
+    "fast": 1,
+    "beps": 1e-05,
+    "vw": 0,
+    "vz": 0
+  },
+  "reconstruction_profile": "direct-MHp-tl1-H-theory-2GeV; reconstructed, not known original author card"
+}

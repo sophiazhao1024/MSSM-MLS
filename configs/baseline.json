@@ -1,0 +1,14 @@
+{
+  "budget": 20000,
+  "initial": 1000,
+  "guided": 100,
+  "random_extra": 5,
+  "epochs": 2000,
+  "learning_rate": 0.001,
+  "batch_size": 256,
+  "classifier_threshold": 0.5,
+  "candidate_chunk": 65536,
+  "max_proposals": 20000000,
+  "max_consecutive_tool_errors": 5,
+  "target_policy": "paper-higgs"
+}

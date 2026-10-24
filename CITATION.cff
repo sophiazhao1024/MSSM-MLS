@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: >-
+  This is an independent historical-method reconstruction, not the original
+  authors' source code. Cite the paper below for MLS, identify the software
+  snapshot used in your work, and report its reconstruction assumptions and
+  validation limits. The default saved-data first recommendation round is a
+  documented failure, not a reproduction of the reported 80% efficiency.
+title: "MSSM MLS historical reconstruction"
+type: software
+version: "0.1.1"
+license: GPL-3.0-or-later
+authors:
+  - name: "MSSM MLS reconstruction contributors"
+abstract: >-
+  An independent implementation of the Model-4 MSSM Machine Learning Scan
+  described by Ren et al. (2019), using raw physical inputs and only natural-log
+  relic-density labels. Includes explicit reconstruction assumptions and
+  reproducible diagnostics of the default first-round failure. It is not
+  recovered original author code or a verified reproduction of the paper's
+  reported scan efficiency.
+keywords:
+  - MSSM
+  - supersymmetry
+  - machine learning scan
+  - scientific reproducibility
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Ren
+      given-names: Jie
+    - family-names: Wu
+      given-names: Lei
+    - family-names: Yang
+      given-names: Jin Min
+    - family-names: Zhao
+      given-names: Jun
+  title: "Exploring supersymmetry with machine learning"
+  journal: "Nuclear Physics B"
+  volume: "943"
+  start: "114613"
+  year: 2019
+  doi: "10.1016/j.nuclphysb.2019.114613"
+  url: "https://doi.org/10.1016/j.nuclphysb.2019.114613"

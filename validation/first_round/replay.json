@@ -1,0 +1,100 @@
+{
+  "kind": "saved_truth_first_fit_and_recommendation_not_full_scan",
+  "source_records": "validation/initial1000_records.jsonl",
+  "source_records_sha256": "49e95eed77d39e0e5871933ac6860a3465237cdf85d993781bb86aeb6ad4f104",
+  "learning_sha256": "f5ae7df2df69434957d1b1735ee60e800bf178f2a304ab91201f089aa6364767",
+  "record_count": 1000,
+  "statuses": {
+    "ok": 70,
+    "unphysical": 825,
+    "tool_error": 105
+  },
+  "initial_points_match_seed_0": true,
+  "settings": {
+    "budget": 20000,
+    "initial": 1000,
+    "guided": 100,
+    "random_extra": 5,
+    "epochs": 2000,
+    "learning_rate": 0.001,
+    "batch_size": 256,
+    "classifier_threshold": 0.5,
+    "candidate_chunk": 65536,
+    "max_proposals": 20000000,
+    "max_consecutive_tool_errors": 5,
+    "target_policy": "paper-higgs"
+  },
+  "new_truth_evaluations": 0,
+  "full_scan_completed": false,
+  "fit": {
+    "fit": 1,
+    "physical_count": 70,
+    "classified_count": 895,
+    "regressors": [
+      {
+        "epochs_executed": 2000,
+        "training_count": 70,
+        "training_loss": 417.6708984375,
+        "row_visits": 140000,
+        "label": "mh"
+      },
+      {
+        "epochs_executed": 2000,
+        "training_count": 70,
+        "training_loss": 20.207979202270508,
+        "row_visits": 140000,
+        "label": "mH"
+      },
+      {
+        "epochs_executed": 2000,
+        "training_count": 70,
+        "training_loss": 1328.4642333984375,
+        "row_visits": 140000,
+        "label": "chi2_hs"
+      },
+      {
+        "epochs_executed": 2000,
+        "training_count": 70,
+        "training_loss": 6.067002296447754,
+        "row_visits": 140000,
+        "label": "ln_omega"
+      }
+    ],
+    "holdout_count": 0,
+    "regularization": false,
+    "classifier": {
+      "epochs_executed": 2000,
+      "training_count": 895,
+      "training_loss": 0.10505006462335587,
+      "row_visits": 1790000,
+      "positive_count": 70,
+      "negative_count": 825
+    }
+  },
+  "fit_seconds": 5.976322458009236,
+  "recommendation_status": "proposal_exhausted",
+  "selection": {
+    "iteration": 1,
+    "requested": 100,
+    "accepted": 0,
+    "proposals": 20000000,
+    "classifier_survivors": 1805893,
+    "positive_weight": 0,
+    "envelope": 1.0
+  },
+  "selection_seconds": 5.976962209038902,
+  "independent_pool_diagnostic": {
+    "count": 10000,
+    "classifier_survivors": 934,
+    "probability_quantiles": [
+      4.359381819085684e-06,
+      0.0011727217060979456,
+      0.011604211758822203,
+      0.10825470089912415,
+      0.9884802103042603
+    ],
+    "predicted_eq7_pass": 0
+  },
+  "public_fixture_note": "Executed afresh against the public sanitized fixture during 0.1.1 packaging. Its x/status/observables match the original data exactly; paths and operational metadata were removed.",
+  "same_fit_and_selection_as_original_replay": true
+}

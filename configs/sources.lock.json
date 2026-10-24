@@ -1,0 +1,31 @@
+{
+  "FeynHiggs": {
+    "version": "2.13.0",
+    "url": "https://wwwth.mpp.mpg.de/members/heinemey/feynhiggs/newversion/FeynHiggs-2.13.0.tar.gz",
+    "sha256": "ecf839bb16d44ce8b6b6f6b9934f26733a3fc616861d17ec20a68241a6286936",
+    "directory": "FeynHiggs-2.13.0",
+    "provenance": "Official release archive"
+  },
+  "HiggsBounds": {
+    "version": "4.3.1",
+    "url": "https://higgsbounds.hepforge.org/downloads/HiggsBounds-4.3.1.tar.gz",
+    "sha256": "791eb9ff134d6b63a0d63b01cb3f1e4ca6cd34f77988eb07889daccd5e72e463",
+    "directory": "HiggsBounds-4.3.1",
+    "provenance": "Official archive; MD5 also matches GAMBIT release_2.1 manifest"
+  },
+  "HiggsSignals": {
+    "version": "1.4.0",
+    "url": "https://higgsbounds.hepforge.org/downloads/HiggsSignals-1.4.0.tar.gz",
+    "sha256": "c025691e6f12ff6ea4aab70e6832d2c22ee20666732c03c4a8d7f9072ca95113",
+    "directory": "HiggsSignals-1.4.0",
+    "provenance": "Official archive; same-number updates exist, hence checksum pin"
+  },
+  "micrOMEGAs": {
+    "version": "4.3.2",
+    "url": "https://codeload.github.com/HEPcodes/micrOMEGAs/tar.gz/671f3705527658618b51e721805a4def7f75d028",
+    "sha256": "5d6be5224c4b58acb3e22cc31f6ac1069895fea2e275d55b5e742243d9f32d05",
+    "directory": "micromegas_4.3.2",
+    "commit": "671f3705527658618b51e721805a4def7f75d028",
+    "provenance": "Historical third-party HEPcodes mirror, commit labelled v4.3.2; original official archive hash unavailable"
+  }
+}

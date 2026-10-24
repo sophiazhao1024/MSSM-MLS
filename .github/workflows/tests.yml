@@ -1,0 +1,29 @@
+name: Python contracts and frozen evidence
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install Python package
+        run: python -m pip install -e '.[test]'
+      - name: Software contract tests
+        run: python -m pytest -q
+      - name: Verify tracked release hashes and saved truth
+        run: python tools/verify_release.py
+      - name: Check frozen network's global exclusion
+        run: python scripts/check_frozen_model.py --output runs/frozen-check.json
+      - name: CLI parser
+        run: mssm-mls-logomega --help
+      # This workflow does not compile the legacy physics software, re-train
+      # networks, or claim that a complete MSSM scan is successful.
+
