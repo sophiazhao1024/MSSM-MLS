@@ -1,4 +1,3 @@
-# MSSM MLS 
 
 A source distribution reconstructing the published **Model-4 MSSM Machine Learning Scan** in *Exploring Supersymmetry with Machine Learning*, Nuclear Physics B 943 (2019) 114613, [doi:10.1016/j.nuclphysb.2019.114613](https://doi.org/10.1016/j.nuclphysb.2019.114613).
 It preserves raw physical inputs and learns `mh`, `mH`, `chi2_hs`, and `ln(omega)` with four independent networks. The Python distribution and command are named `mssm-mls-logomega`.
