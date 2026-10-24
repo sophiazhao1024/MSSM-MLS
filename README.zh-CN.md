@@ -1,10 +1,7 @@
 # MSSM MLS 历史方法重建版使用说明
 
-[English README](README.md) · [逐文件代码导读](docs/code_guide.zh-CN.md)
 
 这是一份可整理上传 GitHub 的完整源码项目，用来重建论文 *Exploring Supersymmetry with Machine Learning* 的 Model-4 MSSM 扫描。项目文件夹名为 `mssm-mls-historical-reconstruction`，Python 发行名和命令名仍为 `mssm-mls-logomega`，Python 导入名为 `mssm_mls`。
-
-**先说明最重要的边界：这不是找回的作者原始程序，也不是已经复现约 80% 效率的成品。** 它保留我们已经审计的“原始输入、仅丰度取 ln”实现和已经发现的首轮失败，提供可检查的源码、配置、数据及诊断入口。上传 GitHub 后应据此介绍项目，不能把打包完成写成科学复现完成。
 
 ## 1. 这一版能做什么
 
